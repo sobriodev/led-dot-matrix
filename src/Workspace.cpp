@@ -18,6 +18,6 @@ int Workspace::isSizeBounded(int size) {
     return size > 0;
 }
 
-Workspace::Workspace(int width, int height) noexcept : width(isSizeBounded(width) ? width : MIN_SIZE), height(height) {}
+Workspace::Workspace(int width, int height) noexcept : width(isSizeBounded(width) ? width : MIN_SIZE), height(isSizeBounded(height) ? height : MIN_SIZE) {}
 
 }
