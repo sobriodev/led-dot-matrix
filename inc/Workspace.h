@@ -6,6 +6,7 @@ namespace leddotmatrix {
 class Workspace {
 public:
     static constexpr int MIN_SIZE = 1;
+    static constexpr int MAX_SIZE = 128;
 
     static Workspace makeRectangle(int width, int height);
     [[nodiscard]] int getWidth() const;

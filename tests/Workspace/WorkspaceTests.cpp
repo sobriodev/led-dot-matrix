@@ -14,4 +14,9 @@ TEST(WorkspaceTestSuite, makeRectangle_HeightLessThanOne_HeightEqualsToOne) {
     ASSERT_EQ(1, workspace.getHeight());
 }
 
+TEST(WorkspaceTestSuite, makeRectangle_WidthTooBigGiven_WidthLimitedToMaxWidth) {
+    const auto workspace = Workspace::makeRectangle(129, 1);
+    ASSERT_EQ(128, workspace.getWidth());
+}
+
 }

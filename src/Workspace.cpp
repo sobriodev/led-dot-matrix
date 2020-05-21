@@ -3,7 +3,7 @@
 namespace leddotmatrix {
 
 Workspace Workspace::makeRectangle(int width, int height) {
-    return Workspace(0, 0);
+    return Workspace(width, height);
 }
 
 int Workspace::getWidth() const {
@@ -17,8 +17,11 @@ int Workspace::getHeight() const {
 int Workspace::getBoundedSize(int size) {
     if (size < MIN_SIZE) {
         return MIN_SIZE;
+    } else if (size > MAX_SIZE) {
+        return MAX_SIZE;
+    } else {
+        return size;
     }
-    return size;
 }
 
 Workspace::Workspace(int width, int height) noexcept : width(getBoundedSize(width)), height(getBoundedSize(height)) {}
