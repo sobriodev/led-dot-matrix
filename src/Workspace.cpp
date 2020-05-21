@@ -14,10 +14,13 @@ int Workspace::getHeight() const {
     return height;
 }
 
-int Workspace::isSizeBounded(int size) {
-    return size > 0;
+int Workspace::getBoundedSize(int size) {
+    if (size < MIN_SIZE) {
+        return MIN_SIZE;
+    }
+    return size;
 }
 
-Workspace::Workspace(int width, int height) noexcept : width(isSizeBounded(width) ? width : MIN_SIZE), height(isSizeBounded(height) ? height : MIN_SIZE) {}
+Workspace::Workspace(int width, int height) noexcept : width(getBoundedSize(width)), height(getBoundedSize(height)) {}
 
 }

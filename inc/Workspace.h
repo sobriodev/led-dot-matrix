@@ -11,7 +11,7 @@ public:
     [[nodiscard]] int getWidth() const;
     [[nodiscard]] int getHeight() const;
 private:
-    static int isSizeBounded(int size);
+    static int getBoundedSize(int size);
     Workspace(int width, int height) noexcept;
 
     int width;
