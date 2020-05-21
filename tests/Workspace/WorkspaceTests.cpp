@@ -16,4 +16,10 @@ TEST(WorkspaceTestSuite, makeRectangle_SizesTooBig_Rectangle128x128Received) {
     ASSERT_EQ(128, workspace.getHeight());
 }
 
+TEST(WorkspaceTestSuite, makeRectangle_ValidRectangle_TheSameRectangleReceived) {
+    const auto workspace = Workspace::makeRectangle(1, 127);
+    ASSERT_EQ(1, workspace.getWidth());
+    ASSERT_EQ(127, workspace.getHeight());
+}
+
 }
