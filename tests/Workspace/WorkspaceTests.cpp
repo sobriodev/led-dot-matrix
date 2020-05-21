@@ -37,4 +37,9 @@ TEST(WorkspaceTestSuite, isSizeValid_SizeGreaterThanMaxSize_FalseReturned) {
     ASSERT_FALSE(result);
 }
 
+TEST(WorkspaceTestSuite, isSizeValid_ValidSize_TrueReturned) {
+    const auto result = Workspace::isSizeValid(125);
+    ASSERT_TRUE(result);
+}
+
 }
