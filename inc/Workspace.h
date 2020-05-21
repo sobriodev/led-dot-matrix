@@ -9,6 +9,7 @@ public:
     static constexpr int MAX_SIZE = 128;
 
     static Workspace makeRectangle(int width, int height);
+    static bool isSizeValid(int size);
     [[nodiscard]] int getWidth() const;
     [[nodiscard]] int getHeight() const;
 private:

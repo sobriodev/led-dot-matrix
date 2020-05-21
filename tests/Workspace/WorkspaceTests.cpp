@@ -22,4 +22,9 @@ TEST(WorkspaceTestSuite, makeRectangle_ValidRectangle_TheSameRectangleReceived) 
     ASSERT_EQ(127, workspace.getHeight());
 }
 
+TEST(WorkspaceTestSuite, isSizeValid_SizeEqualsToZero_FalseReturned) {
+    const auto result = Workspace::isSizeValid(0);
+    ASSERT_FALSE(result);
+}
+
 }
