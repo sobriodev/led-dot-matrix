@@ -9,9 +9,10 @@ public:
     static constexpr int MAX_SIZE = 128;
 
     static Workspace makeRectangle(int width, int height);
-    static bool isSizeValid(int size);
-    [[nodiscard]] int getWidth() const;
-    [[nodiscard]] int getHeight() const;
+    virtual bool isSizeValid(int size);
+    [[nodiscard]] virtual int getWidth() const;
+    [[nodiscard]] virtual int getHeight() const;
+    virtual ~Workspace() noexcept = default;
 private:
     static int getBoundedSize(int size);
     Workspace(int width, int height) noexcept;
