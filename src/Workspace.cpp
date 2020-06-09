@@ -6,7 +6,7 @@ Workspace Workspace::makeRectangle(int width, int height) {
     return Workspace(width, height);
 }
 
-bool Workspace::isSizeValid(int size) {
+bool Workspace::isSizeValid(int size) const {
     return getBoundedSize(size) == size;
 }
 
