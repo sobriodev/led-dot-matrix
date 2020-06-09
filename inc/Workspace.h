@@ -11,9 +11,9 @@ public:
     static constexpr int MAX_SIZE = 128;
 
     static Workspace makeRectangle(int width, int height);
-    bool isSizeValid(int size) const override;
-    int getWidth() const override;
-    int getHeight() const override;
+    [[nodiscard]] bool isSizeValid(int size) const override;
+    [[nodiscard]] int getWidth() const override;
+    [[nodiscard]] int getHeight() const override;
 private:
     static int getBoundedSize(int size);
     Workspace(int width, int height) noexcept;
