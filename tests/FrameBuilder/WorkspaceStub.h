@@ -3,11 +3,11 @@
 
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include "Workspace.h"
+#include "WorkspaceInterface.h"
 
 namespace leddotmatrix {
 
-class WorkspaceStub : public Workspace {
+class WorkspaceStub : public WorkspaceInterface {
 public:
     MOCK_METHOD(bool, isSizeValid, (int size), (const, override));
     MOCK_METHOD(int, getWidth, (), (const, override));
