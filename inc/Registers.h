@@ -5,7 +5,7 @@
 
 namespace leddotmatrix {
 
-enum class Register : uint8_t {
+enum class Register : std::uint8_t {
     NO_OP = 0x00,
     DIGIT0,
     DIGIT1,
