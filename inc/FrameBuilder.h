@@ -20,6 +20,7 @@ public:
     explicit FrameBuilder(WorkspaceInterfacePtr workspaceInterfacePtr) noexcept;
     [[nodiscard]] SerialData getSerialData() const;
 private:
+
     WorkspaceInterfacePtr workspace;
     Frames serialFrames;
 };

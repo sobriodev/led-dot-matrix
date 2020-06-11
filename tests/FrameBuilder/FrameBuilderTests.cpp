@@ -11,22 +11,18 @@ using ::testing::NiceMock;
 using ::testing::SizeIs;
 using ::testing::Return;
 
-using WorkspaceStubPtr = std::unique_ptr<WorkspaceInterface>;
+class GetSerialDataTestFixture : public ::testing::TestWithParam<int> {};
+INSTANTIATE_TEST_SUITE_P(VariousNumberOfDevicesUsed, GetSerialDataTestFixture, ::testing::Values(1, 8, 16129));
 
-WorkspaceStubPtr makeWorkspaceStub() {
+TEST_P(GetSerialDataTestFixture, getSerialData_WorkspacePassed_SerialDataVectorHasTwiceAsManyElementsAsDevicesUsed) {
+    const int devicesUsed = GetParam();
     auto stub = std::make_unique<NiceMock<WorkspaceStub>>();
-    ON_CALL(*stub, isSizeValid).WillByDefault(Return(true));
-    ON_CALL(*stub, getWidth).WillByDefault(Return(4));
-    ON_CALL(*stub, getHeight).WillByDefault(Return(2));
-    ON_CALL(*stub, devicesUsed).WillByDefault(Return(8));
+    ON_CALL(*stub, devicesUsed).WillByDefault(Return(devicesUsed));
 
-    return std::move(stub);
-}
+    const FrameBuilder sut(std::move(stub));
 
-TEST(FrameBuilderTestSuite, getSerialData_Workspace4x2Passed_DataVectorHas16Elements) {
-    const FrameBuilder sut(makeWorkspaceStub());
-
-    ASSERT_THAT(sut.getSerialData(), SizeIs(16));
+    const auto expected = 2 * devicesUsed;
+    ASSERT_THAT(sut.getSerialData(), SizeIs(expected));
 }
 
 }
