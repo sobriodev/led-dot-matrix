@@ -12,6 +12,7 @@ public:
     MOCK_METHOD(bool, isSizeValid, (int size), (const, override));
     MOCK_METHOD(int, getWidth, (), (const, override));
     MOCK_METHOD(int, getHeight, (), (const, override));
+    MOCK_METHOD(int, devicesUsed, (), (const, override));
 };
 
 }

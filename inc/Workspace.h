@@ -14,6 +14,7 @@ public:
     [[nodiscard]] bool isSizeValid(int size) const override;
     [[nodiscard]] int getWidth() const override;
     [[nodiscard]] int getHeight() const override;
+    [[nodiscard]] int devicesUsed() const override;
 private:
     static int getBoundedSize(int size);
     Workspace(int width, int height) noexcept;

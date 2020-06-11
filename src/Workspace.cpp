@@ -18,6 +18,10 @@ int Workspace::getHeight() const {
     return height;
 }
 
+int Workspace::devicesUsed() const {
+    return width * height;
+}
+
 int Workspace::getBoundedSize(int size) {
     if (size < MIN_SIZE) {
         return MIN_SIZE;

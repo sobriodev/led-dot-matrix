@@ -45,4 +45,9 @@ TEST(WorkspaceTestSuite, makeRectangle_ValidRectangle_TheSameRectangleReceived) 
     ASSERT_EQ(127, workspace.getHeight());
 }
 
+TEST(WorkspaceTestSuite, devicesUsed_127x127Rectangle_16129DevicesReceived) {
+    const auto workspace = Workspace::makeRectangle(127, 127);
+    ASSERT_EQ(16129, workspace.devicesUsed());
+}
+
 }
