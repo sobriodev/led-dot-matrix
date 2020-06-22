@@ -4,13 +4,12 @@ namespace leddotmatrix {
 
 FrameBuilder::FrameBuilder(WorkspaceInterfacePtr workspaceInterfacePtr) noexcept:
         workspace(std::move(workspaceInterfacePtr)), serialFrames(workspace->devicesUsed()) {
-    initFramesVector();
+    initSerialFrames();
 }
 
-void FrameBuilder::initFramesVector() {
-    for (auto &frame : serialFrames) {
-        frame = Frame(Register::NO_OP, 0);
-    }
+void FrameBuilder::initSerialFrames() {
+    const Frame noOperationFrame(Register::NO_OP, 0);
+    fillAll(noOperationFrame);
 }
 
 void FrameBuilder::fillAll(const FrameBuilder::Frame &frame) {

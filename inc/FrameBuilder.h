@@ -21,7 +21,7 @@ public:
     [[nodiscard]] const Frames &getFrames() const;
     void fillAll(const Frame &frame);
 private:
-    void initFramesVector();
+    void initSerialFrames();
 
     WorkspaceInterfacePtr workspace;
     Frames serialFrames;
