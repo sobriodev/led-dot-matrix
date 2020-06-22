@@ -19,6 +19,8 @@ class FrameBuilder {
 public:
     explicit FrameBuilder(WorkspaceInterfacePtr workspaceInterfacePtr) noexcept;
     [[nodiscard]] SerialData getSerialData() const;
+    [[nodiscard]] const Frames &getFrames() const;
+    void fillAll(const Frame &frame);
 private:
     void initFramesVector();
 

@@ -22,4 +22,14 @@ void FrameBuilder::initFramesVector() {
     }
 }
 
+void FrameBuilder::fillAll(const FrameBuilder::Frame &frame) {
+    for (auto &entry : serialFrames) {
+        entry = frame;
+    }
+}
+
+const FrameBuilder::Frames &FrameBuilder::getFrames() const {
+    return serialFrames;
+}
+
 }
