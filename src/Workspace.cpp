@@ -10,6 +10,10 @@ bool Workspace::isSizeValid(int size) const {
     return getBoundedSize(size) == size;
 }
 
+bool Workspace::isDeviceHandleValid(int deviceHandle) const {
+    return deviceHandle >= 0 && deviceHandle <= devicesUsed() - 1;
+}
+
 int Workspace::getWidth() const {
     return width;
 }

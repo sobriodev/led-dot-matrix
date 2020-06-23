@@ -12,6 +12,7 @@ public:
 
     static Workspace makeRectangle(int width, int height);
     [[nodiscard]] bool isSizeValid(int size) const override;
+    [[nodiscard]] bool isDeviceHandleValid(int deviceHandle) const override;
     [[nodiscard]] int getWidth() const override;
     [[nodiscard]] int getHeight() const override;
     [[nodiscard]] int devicesUsed() const override;

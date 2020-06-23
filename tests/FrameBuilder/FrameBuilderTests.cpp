@@ -51,4 +51,8 @@ TEST(FrameBuilderTestSuite, fillAll_FramePassed_AllElementsInSerialDataEqualPass
     ASSERT_THAT(actual, AllOf(SizeIs(fakeWorkspace->devicesUsed()), Each(framePassed)));
 }
 
+TEST(FrameBuilderTestSuite, fill_WrongDeviceHandle_NothingIsDoneAndFalseIsReturned) {
+    /* todo */
+}
+
 }

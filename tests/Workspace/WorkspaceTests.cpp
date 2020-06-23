@@ -50,4 +50,16 @@ TEST(WorkspaceTestSuite, devicesUsed_127x127Rectangle_16129DevicesReceived) {
     ASSERT_EQ(16129, workspace.devicesUsed());
 }
 
+TEST(WorkspaceTestSuite, isDeviceHandleValid_InvalidHandle_FalseReturned) {
+    const auto workspace = Workspace::makeRectangle(1, 2);
+    ASSERT_FALSE(workspace.isDeviceHandleValid(-1));
+    ASSERT_FALSE(workspace.isDeviceHandleValid(2));
+}
+
+TEST(WorkspaceTestSuite, isDeviceHandleValid_ValidHandle_TrueReturned) {
+    const auto workspace = Workspace::makeRectangle(1, 2);
+    ASSERT_TRUE(workspace.isDeviceHandleValid(0));
+    ASSERT_TRUE(workspace.isDeviceHandleValid(1));
+}
+
 }

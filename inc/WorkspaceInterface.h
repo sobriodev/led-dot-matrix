@@ -6,6 +6,7 @@ namespace leddotmatrix {
 class WorkspaceInterface {
 public:
     [[nodiscard]] virtual bool isSizeValid(int size) const = 0;
+    [[nodiscard]] virtual bool isDeviceHandleValid(int deviceHandle) const = 0;
     [[nodiscard]] virtual int getWidth() const = 0;
     [[nodiscard]] virtual int getHeight() const = 0;
     [[nodiscard]] virtual int devicesUsed() const = 0;
