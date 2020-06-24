@@ -13,6 +13,11 @@ using ::testing::AllOf;
 
 using FakeWorkspacePtr = std::shared_ptr<WorkspaceInterface>;
 
+static FrameBuilder::Frame createSampleSpiFrame() {
+    static FrameBuilder::Frame sampleFrame(Register::DISPLAY_TEST, 0xFF);
+    return sampleFrame;
+}
+
 class GetFramesTestFixture : public ::testing::TestWithParam<int> {};
 INSTANTIATE_TEST_SUITE_P(VariousNumberOfDevicesUsed, GetFramesTestFixture, ::testing::Values(1, 8, 16129));
 
@@ -36,7 +41,7 @@ TEST(FrameBuilderTestSuite, fillAll_FramePassed_AllElementsInSerialDataEqualPass
     const FakeWorkspacePtr fakeWorkspace = WorkspaceStub::createFakeWorkspace();
     FrameBuilder sut(fakeWorkspace);
 
-    const std::pair<Register, uint8_t> framePassed(Register::DISPLAY_TEST, 0xFF);
+    const auto framePassed = createSampleSpiFrame();
     sut.fillAll(framePassed);
 
     const auto &actual = sut.getFrames();
@@ -47,7 +52,7 @@ TEST(FrameBuilderTestSuite, fill_WrongDeviceHandle_NothingIsDoneAndFalseIsReturn
     const FakeWorkspacePtr fakeWorkspace = WorkspaceStub::createInvalidFakeWorkspace();
     FrameBuilder sut(fakeWorkspace);
 
-    const std::pair<Register, uint8_t> frame(Register::DISPLAY_TEST, 0xFF);
+    const auto frame = createSampleSpiFrame();
     const int dummyDeviceHandle = 1;
     const auto &framesBefore = sut.getFrames();
 

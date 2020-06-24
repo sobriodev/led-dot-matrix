@@ -12,11 +12,12 @@
 namespace leddotmatrix {
 
 class FrameBuilder {
+public:
     using WorkspaceInterfacePtr = std::shared_ptr<WorkspaceInterface>;
     using Frame = std::pair<Register, uint8_t>;
     using Frames = std::vector<Frame>;
     using SerialData = std::vector<uint8_t>;
-public:
+
     explicit FrameBuilder(WorkspaceInterfacePtr workspaceInterfacePtr) noexcept;
     [[nodiscard]] const Frames &getFrames() const;
     void fillAll(const Frame &frame);
