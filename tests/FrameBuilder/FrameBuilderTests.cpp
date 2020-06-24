@@ -44,7 +44,15 @@ TEST(FrameBuilderTestSuite, fillAll_FramePassed_AllElementsInSerialDataEqualPass
 }
 
 TEST(FrameBuilderTestSuite, fill_WrongDeviceHandle_NothingIsDoneAndFalseIsReturned) {
+    const FakeWorkspacePtr fakeWorkspace = WorkspaceStub::createInvalidFakeWorkspace();
+    FrameBuilder sut(fakeWorkspace);
 
+    const std::pair<Register, uint8_t> frame(Register::DISPLAY_TEST, 0xFF);
+    const int dummyDeviceHandle = 1;
+    const auto &framesBefore = sut.getFrames();
+
+    ASSERT_FALSE(sut.fillOne(dummyDeviceHandle, frame));
+    ASSERT_EQ(sut.getFrames(), framesBefore);
 }
 
 }

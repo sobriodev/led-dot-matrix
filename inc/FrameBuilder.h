@@ -20,6 +20,7 @@ public:
     explicit FrameBuilder(WorkspaceInterfacePtr workspaceInterfacePtr) noexcept;
     [[nodiscard]] const Frames &getFrames() const;
     void fillAll(const Frame &frame);
+    bool fillOne(int deviceHandle, const Frame &frame);
 private:
     void initSerialFrames();
 

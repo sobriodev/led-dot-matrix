@@ -18,6 +18,10 @@ void FrameBuilder::fillAll(const FrameBuilder::Frame &frame) {
     }
 }
 
+bool FrameBuilder::fillOne(int deviceHandle, const FrameBuilder::Frame &frame) {
+    return workspace->isDeviceHandleValid(deviceHandle);
+}
+
 const FrameBuilder::Frames &FrameBuilder::getFrames() const {
     return serialFrames;
 }

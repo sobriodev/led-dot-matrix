@@ -20,6 +20,7 @@ public:
     MOCK_METHOD(int, devicesUsed, (), (const, override));
 
     static WorkspaceInterfacePointer createFakeWorkspace(int devicesUsed = 10);
+    static WorkspaceInterfacePointer createInvalidFakeWorkspace();
 };
 
 }
