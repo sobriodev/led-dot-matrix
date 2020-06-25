@@ -13,7 +13,7 @@ using ::testing::AllOf;
 
 using FakeWorkspacePtr = std::shared_ptr<WorkspaceInterface>;
 
-static FrameBuilder::Frame createSampleSpiFrame() {
+static auto createSampleSpiFrame() {
     static FrameBuilder::Frame sampleFrame(Register::DISPLAY_TEST, 0xFF);
     return sampleFrame;
 }
