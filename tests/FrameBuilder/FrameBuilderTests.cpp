@@ -71,4 +71,17 @@ TEST(FrameBuilderTestSuite, fillOne_CorrectDeviceHandle_FrameIsSetAndTrueIsRetur
     ASSERT_EQ(sut.getFrames().at(deviceHandle), framePassed);
 }
 
+TEST(FrameBuildeTestSuite, fillOne_FrameAssignedTwice_OldFrameWillBeOverridden) {
+    const FakeWorkspacePtr fakeWorkspace = WorkspaceStub::createFakeWorkspace(10);
+    FrameBuilder sut(fakeWorkspace);
+
+    const auto oldFrame = createSampleSpiFrame();
+    const FrameBuilder::Frame newFrame(Register::DIGIT0, 0x0F);
+    const int deviceHandle = 7;
+    sut.fillOne(deviceHandle, oldFrame);
+
+    ASSERT_TRUE(sut.fillOne(deviceHandle, newFrame));
+    ASSERT_EQ(sut.getFrames().at(deviceHandle), newFrame);
+}
+
 }
