@@ -48,7 +48,7 @@ TEST(FrameBuilderTestSuite, fillAll_FramePassed_AllElementsInSerialDataEqualPass
     ASSERT_THAT(actual, AllOf(SizeIs(fakeWorkspace->devicesUsed()), Each(framePassed)));
 }
 
-TEST(FrameBuilderTestSuite, fill_WrongDeviceHandle_NothingIsDoneAndFalseIsReturned) {
+TEST(FrameBuilderTestSuite, fillOne_WrongDeviceHandle_NothingIsDoneAndFalseIsReturned) {
     const FakeWorkspacePtr fakeWorkspace = WorkspaceStub::createInvalidFakeWorkspace();
     FrameBuilder sut(fakeWorkspace);
 
@@ -59,5 +59,6 @@ TEST(FrameBuilderTestSuite, fill_WrongDeviceHandle_NothingIsDoneAndFalseIsReturn
     ASSERT_FALSE(sut.fillOne(dummyDeviceHandle, frame));
     ASSERT_EQ(sut.getFrames(), framesBefore);
 }
+
 
 }
