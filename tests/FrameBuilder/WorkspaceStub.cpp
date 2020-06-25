@@ -8,6 +8,8 @@ using ::testing::NiceMock;
 WorkspaceStub::WorkspaceInterfacePointer WorkspaceStub::createFakeWorkspace(int devicesUsed) {
     auto stub = std::make_unique<NiceMock<WorkspaceStub>>();
     ON_CALL(*stub, devicesUsed).WillByDefault(Return(devicesUsed));
+    ON_CALL(*stub, isSizeValid).WillByDefault(Return(true));
+    ON_CALL(*stub, isDeviceHandleValid).WillByDefault(Return(true));
     return stub;
 }
 

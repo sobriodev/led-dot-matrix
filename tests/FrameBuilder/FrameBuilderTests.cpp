@@ -60,5 +60,15 @@ TEST(FrameBuilderTestSuite, fillOne_WrongDeviceHandle_NothingIsDoneAndFalseIsRet
     ASSERT_EQ(sut.getFrames(), framesBefore);
 }
 
+TEST(FrameBuilderTEstSuite, fillOne_CorrectDeviceHandle_FrameIsSetAndTrueIsReturned) {
+    const FakeWorkspacePtr fakeWorkspace = WorkspaceStub::createFakeWorkspace(5);
+    FrameBuilder sut(fakeWorkspace);
+
+    const auto framePassed = createSampleSpiFrame();
+    const int deviceHandle = 0;
+
+    ASSERT_TRUE(sut.fillOne(deviceHandle, framePassed));
+    ASSERT_EQ(sut.getFrames().at(deviceHandle), framePassed);
+}
 
 }
