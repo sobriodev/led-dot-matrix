@@ -8,6 +8,7 @@
 
 #include "Registers.h"
 #include "WorkspaceInterface.h"
+#include "SpiConvertible.h"
 
 namespace leddotmatrix {
 
@@ -16,7 +17,6 @@ public:
     using WorkspaceInterfacePtr = std::shared_ptr<WorkspaceInterface>;
     using Frame = std::pair<Register, uint8_t>;
     using Frames = std::vector<Frame>;
-    using SerialData = std::vector<uint8_t>;
 
     explicit FrameBuilder(WorkspaceInterfacePtr workspaceInterfacePtr) noexcept;
     [[nodiscard]] const Frames &getFrames() const;
