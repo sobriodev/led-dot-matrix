@@ -9,8 +9,12 @@ FrameBuilderSpiConverter::FrameBuilderSpiConverter(
         frameBuilder(std::move(frameBuilderInterfacePtr)) {}
 
 SpiConvertible::SpiData FrameBuilderSpiConverter::convertToSpiData() const {
-    SpiData output(frameBuilder->getFrames().size() * 2);
-    return output;
+    SpiData spiData;
+    for (auto iter = frameBuilder->getFrames().crbegin(); iter != frameBuilder->getFrames().crend(); iter++) {
+        spiData.push_back(static_cast<SpiByte>(iter->first));
+        spiData.push_back(iter->second);
+    }
+    return spiData;
 }
 
 }

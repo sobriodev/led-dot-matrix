@@ -14,4 +14,13 @@ FrameBuilderStub::FrameBuilderInterfacePtr FrameBuilderStub::createFixedSize(int
     return stub;
 }
 
+FrameBuilderStub::FrameBuilderInterfacePtr
+FrameBuilderStub::createFixedFrames(const FrameBuilderInterface::Frames &frames) {
+    static const Frames spiVector = frames;
+
+    auto stub = std::make_unique<NiceMock<FrameBuilderStub>>();
+    ON_CALL(*stub, getFrames).WillByDefault(ReturnRef(spiVector));
+    return stub;
+}
+
 }

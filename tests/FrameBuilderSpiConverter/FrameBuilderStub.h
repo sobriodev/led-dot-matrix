@@ -16,6 +16,7 @@ public:
     MOCK_METHOD(const Frames&, getFrames, (), (const, override));
 
     static FrameBuilderInterfacePtr createFixedSize(int size);
+    static FrameBuilderInterfacePtr createFixedFrames(const Frames &frames);
 };
 
 }
