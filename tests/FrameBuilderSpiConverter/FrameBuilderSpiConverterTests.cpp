@@ -4,6 +4,7 @@
 #include "FrameBuilderStub.h"
 
 using testing::SizeIs;
+using testing::Each;
 
 namespace leddotmatrix {
 
@@ -15,6 +16,13 @@ TEST(FrameBuilderSpiConverterTestSuite,
     const FrameBuilderSpiConverter sut(fakeFrameBuilder);
 
     ASSERT_THAT(sut.convertToSpiData(), SizeIs(20));
+}
+
+TEST(FrameBuilderSpiConverterTestSuie, convertToSpiData_ByDefault_OnlyNoOpFramesArePresent) {
+    const FrameBuilderInterfacePtr fakeFrameBuilder = FrameBuilderStub::createFixedSize(120);
+    const FrameBuilderSpiConverter sut(fakeFrameBuilder);
+
+    ASSERT_THAT(sut.convertToSpiData(), Each(0));
 }
 
 }
