@@ -1,24 +1,19 @@
 #ifndef LEDDOTMATRIX_FRAMEBUILDER_H
 #define LEDDOTMATRIX_FRAMEBUILDER_H
 
-#include <utility>
-#include <cstdint>
-#include <vector>
 #include <memory>
 
-#include "Registers.h"
 #include "WorkspaceInterface.h"
+#include "FrameBuilderInterface.h"
 
 namespace leddotmatrix {
 
-class FrameBuilder {
+class FrameBuilder : public FrameBuilderInterface {
 public:
     using WorkspaceInterfacePtr = std::shared_ptr<WorkspaceInterface>;
-    using Frame = std::pair<Register, uint8_t>;
-    using Frames = std::vector<Frame>;
 
     explicit FrameBuilder(WorkspaceInterfacePtr workspaceInterfacePtr) noexcept;
-    [[nodiscard]] const Frames &getFrames() const;
+    [[nodiscard]] const Frames &getFrames() const override;
     void fillAll(const Frame &frame);
     bool fillOne(int deviceHandle, const Frame &frame);
 private:
