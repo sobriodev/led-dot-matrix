@@ -18,7 +18,7 @@ TEST(FrameBuilderSpiConverterTestSuite,
     ASSERT_THAT(sut.convertToSpiData(), SizeIs(20));
 }
 
-TEST(FrameBuilderSpiConverterTestSuie, convertToSpiData_ByDefault_OnlyNoOpFramesArePresent) {
+TEST(FrameBuilderSpiConverterTestSuite, convertToSpiData_ByDefault_OnlyNoOpFramesArePresent) {
     const FrameBuilderInterfacePtr fakeFrameBuilder = FrameBuilderStub::createFixedSize(120);
     const FrameBuilderSpiConverter sut(fakeFrameBuilder);
 
