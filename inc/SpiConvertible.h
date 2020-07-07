@@ -7,9 +7,10 @@
 namespace leddotmatrix {
 
 class SpiConvertible {
+public:
     using SpiByte = std::uint8_t;
     using SpiData = std::vector<SpiByte>;
-public:
+
     [[nodiscard]] virtual SpiData convertToSpiData() const = 0;
     virtual ~SpiConvertible() noexcept = default;
 };

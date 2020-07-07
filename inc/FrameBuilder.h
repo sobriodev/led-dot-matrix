@@ -8,7 +8,6 @@
 
 #include "Registers.h"
 #include "WorkspaceInterface.h"
-#include "SpiConvertible.h"
 
 namespace leddotmatrix {
 
