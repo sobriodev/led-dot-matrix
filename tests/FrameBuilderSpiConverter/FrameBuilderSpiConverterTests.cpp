@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 #include "Registers.h"
-#include "FrameBuilderInterface.h"
+#include "interfaces/FrameBuilderInterface.h"
 #include "FrameBuilderSpiConverter.h"
 #include "FrameBuilderStub.h"
 

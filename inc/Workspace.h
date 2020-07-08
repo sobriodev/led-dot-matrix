@@ -1,7 +1,7 @@
 #ifndef LEDDOTMATRIX_WORKSPACE_H
 #define LEDDOTMATRIX_WORKSPACE_H
 
-#include "WorkspaceInterface.h"
+#include "interfaces/WorkspaceInterface.h"
 
 namespace leddotmatrix {
 

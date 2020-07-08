@@ -5,7 +5,7 @@
 namespace leddotmatrix {
 
 FrameBuilderSpiConverter::FrameBuilderSpiConverter(
-        FrameBuilderSpiConverter::FrameBuilderInterfacePtr frameBuilderInterfacePtr) noexcept :
+        FrameBuilderSpiConverter::FrameBuilderInterfacePtr frameBuilderInterfacePtr) noexcept:
         frameBuilder(std::move(frameBuilderInterfacePtr)) {}
 
 SpiConvertible::SpiData FrameBuilderSpiConverter::convertToSpiData() const {

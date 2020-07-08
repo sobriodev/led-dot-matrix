@@ -5,7 +5,7 @@
 
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include "FrameBuilderInterface.h"
+#include "interfaces/FrameBuilderInterface.h"
 
 namespace leddotmatrix {
 

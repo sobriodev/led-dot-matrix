@@ -3,8 +3,8 @@
 
 #include <memory>
 
-#include "SpiConvertible.h"
-#include <FrameBuilderInterface.h>
+#include "interfaces/SpiConvertible.h"
+#include <interfaces/FrameBuilderInterface.h>
 
 namespace leddotmatrix {
 

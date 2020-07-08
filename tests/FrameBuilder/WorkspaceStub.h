@@ -5,7 +5,7 @@
 
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include "WorkspaceInterface.h"
+#include "interfaces/WorkspaceInterface.h"
 
 namespace leddotmatrix {
 

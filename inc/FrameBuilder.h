@@ -3,8 +3,8 @@
 
 #include <memory>
 
-#include "WorkspaceInterface.h"
-#include "FrameBuilderInterface.h"
+#include "interfaces/WorkspaceInterface.h"
+#include "interfaces/FrameBuilderInterface.h"
 
 namespace leddotmatrix {
 
