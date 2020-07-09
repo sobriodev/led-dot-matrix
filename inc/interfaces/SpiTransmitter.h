@@ -10,7 +10,7 @@ class SpiTransmitter {
 public:
     using SpiData = std::vector<std::uint8_t>;
 
-    virtual bool transmit(const SpiData &data) = 0;
+    [[nodiscard]] virtual bool transmit(const SpiData &data) const = 0;
     virtual ~SpiTransmitter() noexcept = default;
 };
 

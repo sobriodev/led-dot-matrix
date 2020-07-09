@@ -7,5 +7,5 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 include_directories(${gmock_SOURCE_DIR}/include ${gmock_SOURCE_DIR})
 include_directories(${LEDDotMatrix_SOURCE_DIR}/inc)
 
-add_executable(Google_Tests_run Workspace/WorkspaceTests.cpp ../src/Workspace.cpp FrameBuilder/FrameBuilderTests.cpp FrameBuilder/WorkspaceStub.h ../src/FrameBuilder.cpp FrameBuilder/WorkspaceStub.cpp ../src/FrameBuilderSpiConverter.cpp FrameBuilderSpiConverter/FrameBuilderSpiConverterTests.cpp FrameBuilderSpiConverter/FrameBuilderStub.h FrameBuilderSpiConverter/FrameBuilderStub.cpp)
+add_executable(Google_Tests_run Workspace/WorkspaceTests.cpp ../src/Workspace.cpp FrameBuilder/FrameBuilderTests.cpp FrameBuilder/WorkspaceStub.h ../src/FrameBuilder.cpp FrameBuilder/WorkspaceStub.cpp ../src/FrameBuilderSpiConverter.cpp FrameBuilderSpiConverter/FrameBuilderSpiConverterTests.cpp FrameBuilderSpiConverter/FrameBuilderStub.h FrameBuilderSpiConverter/FrameBuilderStub.cpp SpiController/SpiControllerTests.cpp SpiController/SpiTransmitterMock.cpp SpiController/SpiTransmitterMock.h SpiController/SpiConvertibleStub.cpp SpiController/SpiConvertibleStub.h ../src/SpiController.cpp)
 target_link_libraries(Google_Tests_run gtest gtest_main gmock)
