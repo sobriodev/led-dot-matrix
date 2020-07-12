@@ -3,7 +3,7 @@
 
 namespace leddotmatrix {
 
-Workspace createDummyWorkspace() {
+auto createDummyWorkspace() {
     return Workspace::makeRectangle(1, 1);
 }
 
