@@ -8,13 +8,20 @@
 
 namespace leddotmatrix {
 
+using testing::NiceMock;
+using testing::Return;
+
 class SpiTransmitterMock : public SpiTransmitter {
 public:
     using SpiTransmitterPtr = std::unique_ptr<SpiTransmitter>;
 
     MOCK_METHOD(bool, transmit, (const SpiData &data), (const, override));
 
-    static SpiTransmitterPtr create(const SpiData &expected);
+    static SpiTransmitterPtr create(const SpiData &expected) {
+        auto mock = std::make_unique<SpiTransmitterMock>();
+        EXPECT_CALL(*mock, transmit(expected)).WillRepeatedly(Return(true));
+        return mock;
+    }
 };
 
 }
