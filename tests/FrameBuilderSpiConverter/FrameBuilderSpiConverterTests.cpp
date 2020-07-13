@@ -4,6 +4,7 @@
 #include "interfaces/FrameBuilderInterface.h"
 #include "FrameBuilderSpiConverter.h"
 #include "FrameBuilderStub.h"
+#include "NullPointerException.h"
 
 using testing::SizeIs;
 using testing::Each;
@@ -12,6 +13,10 @@ using testing::ElementsAre;
 namespace leddotmatrix {
 
 using FrameBuilderInterfacePtr = std::shared_ptr<FrameBuilderInterface>;
+
+TEST(FrameBuilderSpiConverterTestSuite, FrameBuilderSpiConverter_NullFrameBuilder_ExceptionIsThrown) {
+    ASSERT_THROW(FrameBuilderSpiConverter(nullptr), NullPointerException);
+}
 
 TEST(FrameBuilderSpiConverterTestSuite,
      convertToSpiData_ByDefault_SpiDataVectorHasTwiceAsManyElementsAsFrameBuilderFramesVector) {

@@ -1,9 +1,14 @@
 #include "FrameBuilder.h"
+#include "NullPointerException.h"
 
 namespace leddotmatrix {
 
-FrameBuilder::FrameBuilder(WorkspaceInterfacePtr workspaceInterfacePtr) noexcept:
-        workspace(std::move(workspaceInterfacePtr)), serialFrames(workspace->devicesUsed()) {
+FrameBuilder::FrameBuilder(WorkspaceInterfacePtr workspaceInterfacePtr):
+        workspace(std::move(workspaceInterfacePtr)) {
+    if (!workspace) {
+        throw NullPointerException();
+    }
+    serialFrames = Frames(workspace->devicesUsed());
     initSerialFrames();
 }
 

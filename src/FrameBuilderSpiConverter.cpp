@@ -1,12 +1,17 @@
 #include <memory>
 
 #include "FrameBuilderSpiConverter.h"
+#include "NullPointerException.h"
 
 namespace leddotmatrix {
 
 FrameBuilderSpiConverter::FrameBuilderSpiConverter(
-        FrameBuilderSpiConverter::FrameBuilderInterfacePtr frameBuilderInterfacePtr) noexcept:
-        frameBuilder(std::move(frameBuilderInterfacePtr)) {}
+        FrameBuilderSpiConverter::FrameBuilderInterfacePtr frameBuilderInterfacePtr):
+        frameBuilder(std::move(frameBuilderInterfacePtr)) {
+    if (!frameBuilder) {
+        throw NullPointerException();
+    }
+}
 
 SpiConvertible::SpiData FrameBuilderSpiConverter::convertToSpiData() const {
     SpiData spiData;

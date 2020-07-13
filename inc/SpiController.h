@@ -10,7 +10,7 @@ namespace leddotmatrix {
 
 class SpiController {
 public:
-    explicit SpiController(std::shared_ptr<SpiTransmitter> transmitter) noexcept;
+    explicit SpiController(std::shared_ptr<SpiTransmitter> transmitter);
     [[nodiscard]] bool update(const SpiConvertible &convertible) const;
 private:
     std::shared_ptr<SpiTransmitter> spiTransmitter;

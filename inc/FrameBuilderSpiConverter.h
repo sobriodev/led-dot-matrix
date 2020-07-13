@@ -12,7 +12,7 @@ class FrameBuilderSpiConverter : public SpiConvertible {
 public:
     using FrameBuilderInterfacePtr = std::shared_ptr<FrameBuilderInterface>;
 
-    explicit FrameBuilderSpiConverter(FrameBuilderInterfacePtr frameBuilderInterfacePtr) noexcept;
+    explicit FrameBuilderSpiConverter(FrameBuilderInterfacePtr frameBuilderInterfacePtr);
     [[nodiscard]] SpiData convertToSpiData() const override;
 private:
     FrameBuilderInterfacePtr frameBuilder;

@@ -4,6 +4,7 @@
 #include "gmock/gmock.h"
 #include "WorkspaceStub.h"
 #include "FrameBuilder.h"
+#include "NullPointerException.h"
 
 namespace leddotmatrix {
 
@@ -16,6 +17,10 @@ using FakeWorkspacePtr = std::shared_ptr<WorkspaceInterface>;
 static auto createSampleSpiFrame() {
     static FrameBuilder::Frame sampleFrame(Register::DISPLAY_TEST, 0xFF);
     return sampleFrame;
+}
+
+TEST(FrameBuilderTestSuite, FrameBuilder_NullWorkspace_ExceptionsIsThrown) {
+    ASSERT_THROW(FrameBuilder(nullptr), NullPointerException);
 }
 
 class GetFramesTestFixture : public ::testing::TestWithParam<int> {};

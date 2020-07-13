@@ -3,8 +3,13 @@
 #include "SpiController.h"
 #include "SpiTransmitterMock.h"
 #include "SpiConvertibleStub.h"
+#include "NullPointerException.h"
 
 namespace leddotmatrix {
+
+TEST (SpiControllerTestSuite, SpiController_NullPtrTransmitter_ExceptionIsThrown) {
+    ASSERT_THROW(SpiController(nullptr), NullPointerException);
+}
 
 TEST(SpiControllerTestSuite, transmit_SpiDataPassed_DataSentCorrectly) {
     const auto spiConvertibleStub = SpiConvertibleStub::create();

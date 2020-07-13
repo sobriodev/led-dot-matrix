@@ -12,7 +12,7 @@ class FrameBuilder : public FrameBuilderInterface {
 public:
     using WorkspaceInterfacePtr = std::shared_ptr<WorkspaceInterface>;
 
-    explicit FrameBuilder(WorkspaceInterfacePtr workspaceInterfacePtr) noexcept;
+    explicit FrameBuilder(WorkspaceInterfacePtr workspaceInterfacePtr);
     [[nodiscard]] const Frames &getFrames() const override;
     void fillAll(const Frame &frame);
     bool fillOne(int deviceHandle, const Frame &frame);
