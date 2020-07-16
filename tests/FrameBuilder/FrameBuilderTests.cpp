@@ -2,7 +2,6 @@
 
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include "Workspace.h"
 #include "WorkspaceStub.h"
 #include "FrameBuilder.h"
 #include "NullPointerException.h"
