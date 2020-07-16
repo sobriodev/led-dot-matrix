@@ -3,19 +3,19 @@
 
 #include <memory>
 
+#include "FrameBuilder.h"
 #include "interfaces/SpiConvertible.h"
-#include <interfaces/FrameBuilderInterface.h>
 
 namespace leddotmatrix {
 
 class FrameBuilderSpiConverter : public SpiConvertible {
 public:
-    using FrameBuilderInterfacePtr = std::shared_ptr<FrameBuilderInterface>;
+    using FrameBuilderPtr = std::shared_ptr<FrameBuilder>;
 
-    explicit FrameBuilderSpiConverter(FrameBuilderInterfacePtr frameBuilderInterfacePtr);
+    explicit FrameBuilderSpiConverter(FrameBuilderPtr frameBuilderInterfacePtr);
     [[nodiscard]] SpiData convertToSpiData() const override;
 private:
-    FrameBuilderInterfacePtr frameBuilder;
+    FrameBuilderPtr frameBuilder;
 };
 
 }

@@ -5,20 +5,20 @@
 
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include "interfaces/FrameBuilderInterface.h"
+#include "FrameBuilder.h"
 
 namespace leddotmatrix {
 
 using ::testing::ReturnRef;
 using ::testing::NiceMock;
 
-class FrameBuilderStub : public FrameBuilderInterface {
+class FrameBuilderStub : public FrameBuilder {
 public:
-    using FrameBuilderInterfacePtr = std::unique_ptr<FrameBuilderInterface>;
+    using FrameBuilderPtr = std::unique_ptr<FrameBuilder>;
 
     MOCK_METHOD(const Frames&, getFrames, (), (const, override));
 
-    static FrameBuilderInterfacePtr createFixedSize(int size) {
+    static FrameBuilderPtr createFixedSize(int size) {
         static const Frames outputVector(size, {Register::NO_OP, 0x00});
 
         auto stub = std::make_unique<NiceMock<FrameBuilderStub>>();
@@ -26,7 +26,7 @@ public:
         return stub;
     }
 
-    static FrameBuilderInterfacePtr createFixedFrames(const Frames &frames) {
+    static FrameBuilderPtr createFixedFrames(const Frames &frames) {
         static const Frames spiVector = frames;
 
         auto stub = std::make_unique<NiceMock<FrameBuilderStub>>();
