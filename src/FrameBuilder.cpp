@@ -3,8 +3,8 @@
 
 namespace leddotmatrix {
 
-FrameBuilder::FrameBuilder(WorkspacePtr workspaceInterfacePtr):
-        workspace(std::move(workspaceInterfacePtr)) {
+FrameBuilder::FrameBuilder(WorkspacePtr workspacePtr):
+        workspace(std::move(workspacePtr)) {
     if (!workspace) {
         throw NullPointerException();
     }

@@ -15,7 +15,7 @@ public:
     using Frames = std::vector<Frame>;
     using WorkspacePtr = std::shared_ptr<Workspace>;
 
-    explicit FrameBuilder(WorkspacePtr workspaceInterfacePtr);
+    explicit FrameBuilder(WorkspacePtr workspacePtr);
     [[nodiscard]] virtual const Frames &getFrames() const;
     void fillAll(const Frame &frame);
     bool fillOne(int deviceHandle, const Frame &frame);

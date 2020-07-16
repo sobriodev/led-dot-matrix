@@ -2,6 +2,6 @@
 
 namespace leddotmatrix {
 
-NullPointerException::NullPointerException() : std::runtime_error(MESSAGE) {}
+NullPointerException::NullPointerException() noexcept: std::runtime_error(MESSAGE) {}
 
 }

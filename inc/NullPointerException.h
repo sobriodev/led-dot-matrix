@@ -8,7 +8,7 @@ namespace leddotmatrix {
 class NullPointerException : public std::runtime_error {
 public:
     static constexpr const char *MESSAGE = "Null pointer is not allowed here";
-    NullPointerException();
+    NullPointerException() noexcept;
 };
 
 }

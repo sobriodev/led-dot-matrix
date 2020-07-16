@@ -6,8 +6,8 @@
 namespace leddotmatrix {
 
 FrameBuilderSpiConverter::FrameBuilderSpiConverter(
-        FrameBuilderSpiConverter::FrameBuilderPtr frameBuilderInterfacePtr):
-        frameBuilder(std::move(frameBuilderInterfacePtr)) {
+        FrameBuilderSpiConverter::FrameBuilderPtr frameBuilderPtr):
+        frameBuilder(std::move(frameBuilderPtr)) {
     if (!frameBuilder) {
         throw NullPointerException();
     }

@@ -5,7 +5,7 @@
 
 namespace leddotmatrix {
 
-SpiController::SpiController(std::shared_ptr<SpiTransmitter> transmitter):
+SpiController::SpiController(SpiTransmitterPtr transmitter):
         spiTransmitter(std::move(transmitter)) {
     if (!spiTransmitter) {
         throw NullPointerException();
