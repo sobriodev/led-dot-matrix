@@ -8,11 +8,12 @@ FrameBuilder::FrameBuilder(WorkspacePtr workspacePtr):
     if (!workspace) {
         throw NullPointerException();
     }
-    serialFrames = Frames(workspace->devicesUsed());
     initSerialFrames();
 }
 
 void FrameBuilder::initSerialFrames() {
+    serialFrames = Frames(workspace->devicesUsed());
+
     const Frame noOperationFrame(Register::NO_OP, 0);
     fillAll(noOperationFrame);
 }
