@@ -5,16 +5,16 @@
 
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include "interfaces/WorkspaceInterface.h"
+#include "Workspace.h"
 
 namespace leddotmatrix {
 
 using ::testing::Return;
 using ::testing::NiceMock;
 
-class WorkspaceStub : public WorkspaceInterface {
+class WorkspaceStub : public Workspace {
 public:
-    using WorkspaceInterfacePointer = std::unique_ptr<WorkspaceInterface>;
+    using WorkspacePtr = std::unique_ptr<Workspace>;
 
     MOCK_METHOD(bool, isSizeValid, (int size), (const, override));
     MOCK_METHOD(bool, isDeviceHandleValid, (int deviceHandle), (const, override));
@@ -22,7 +22,7 @@ public:
     MOCK_METHOD(int, getHeight, (), (const, override));
     MOCK_METHOD(int, devicesUsed, (), (const, override));
 
-    static WorkspaceInterfacePointer createFakeWorkspace(int devicesUsed = 10) {
+    static WorkspacePtr createFakeWorkspace(int devicesUsed = 10) {
         auto stub = std::make_unique<NiceMock<WorkspaceStub>>();
         ON_CALL(*stub, devicesUsed).WillByDefault(Return(devicesUsed));
         ON_CALL(*stub, isSizeValid).WillByDefault(Return(true));
@@ -30,7 +30,7 @@ public:
         return stub;
     }
 
-    static WorkspaceInterfacePointer createInvalidFakeWorkspace() {
+    static WorkspacePtr createInvalidFakeWorkspace() {
         auto stub = std::make_unique<NiceMock<WorkspaceStub>>();
         ON_CALL(*stub, isSizeValid).WillByDefault(Return(false));
         ON_CALL(*stub, isDeviceHandleValid).WillByDefault(Return(false));

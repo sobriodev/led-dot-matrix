@@ -2,6 +2,7 @@
 
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
+#include "Workspace.h"
 #include "WorkspaceStub.h"
 #include "FrameBuilder.h"
 #include "NullPointerException.h"
@@ -11,8 +12,6 @@ namespace leddotmatrix {
 using ::testing::SizeIs;
 using ::testing::Each;
 using ::testing::AllOf;
-
-using FakeWorkspacePtr = std::shared_ptr<WorkspaceInterface>;
 
 static auto createSampleSpiFrame() {
     static FrameBuilder::Frame sampleFrame(Register::DISPLAY_TEST, 0xFF);
@@ -28,14 +27,14 @@ INSTANTIATE_TEST_SUITE_P(VariousNumberOfDevicesUsed, GetFramesTestFixture, ::tes
 
 TEST_P(GetFramesTestFixture, getFrames_WorkspacePassed_SerialDataVectorHasTheSameNumberOfElementsAsDevicesUsed) {
     const int devicesUsed = GetParam();
-    const FakeWorkspacePtr fakeWorkspace = WorkspaceStub::createFakeWorkspace(devicesUsed);
+    const FrameBuilder::WorkspacePtr fakeWorkspace = WorkspaceStub::createFakeWorkspace(devicesUsed);
     const FrameBuilder sut(fakeWorkspace);
 
     ASSERT_THAT(sut.getFrames(), SizeIs(devicesUsed));
 }
 
 TEST(FrameBuilderTestSuite, getFrames_ByDefault_SerialDataVectorIsFilledWithZeros) {
-    const FakeWorkspacePtr fakeWorkspace = WorkspaceStub::createFakeWorkspace();
+    const FrameBuilder::WorkspacePtr fakeWorkspace = WorkspaceStub::createFakeWorkspace();
     const FrameBuilder sut(fakeWorkspace);
 
     const std::pair<Register, uint8_t> expectedFrame(Register::NO_OP, 0x00);
@@ -43,7 +42,7 @@ TEST(FrameBuilderTestSuite, getFrames_ByDefault_SerialDataVectorIsFilledWithZero
 }
 
 TEST(FrameBuilderTestSuite, fillAll_FramePassed_AllElementsInSerialDataEqualPassedFrame) {
-    const FakeWorkspacePtr fakeWorkspace = WorkspaceStub::createFakeWorkspace();
+    const FrameBuilder::WorkspacePtr fakeWorkspace = WorkspaceStub::createFakeWorkspace();
     FrameBuilder sut(fakeWorkspace);
 
     const auto framePassed = createSampleSpiFrame();
@@ -54,7 +53,7 @@ TEST(FrameBuilderTestSuite, fillAll_FramePassed_AllElementsInSerialDataEqualPass
 }
 
 TEST(FrameBuilderTestSuite, fillOne_WrongDeviceHandle_NothingIsDoneAndFalseIsReturned) {
-    const FakeWorkspacePtr fakeWorkspace = WorkspaceStub::createInvalidFakeWorkspace();
+    const FrameBuilder::WorkspacePtr fakeWorkspace = WorkspaceStub::createInvalidFakeWorkspace();
     FrameBuilder sut(fakeWorkspace);
 
     const auto frame = createSampleSpiFrame();
@@ -66,7 +65,7 @@ TEST(FrameBuilderTestSuite, fillOne_WrongDeviceHandle_NothingIsDoneAndFalseIsRet
 }
 
 TEST(FrameBuilderTestSuite, fillOne_CorrectDeviceHandle_FrameIsSetAndTrueIsReturned) {
-    const FakeWorkspacePtr fakeWorkspace = WorkspaceStub::createFakeWorkspace(5);
+    const FrameBuilder::WorkspacePtr fakeWorkspace = WorkspaceStub::createFakeWorkspace(5);
     FrameBuilder sut(fakeWorkspace);
 
     const auto framePassed = createSampleSpiFrame();
@@ -77,7 +76,7 @@ TEST(FrameBuilderTestSuite, fillOne_CorrectDeviceHandle_FrameIsSetAndTrueIsRetur
 }
 
 TEST(FrameBuildeTestSuite, fillOne_FrameAssignedTwice_OldFrameWillBeOverridden) {
-    const FakeWorkspacePtr fakeWorkspace = WorkspaceStub::createFakeWorkspace(10);
+    const FrameBuilder::WorkspacePtr fakeWorkspace = WorkspaceStub::createFakeWorkspace(10);
     FrameBuilder sut(fakeWorkspace);
 
     const auto oldFrame = createSampleSpiFrame();

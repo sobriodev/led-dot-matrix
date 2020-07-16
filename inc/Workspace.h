@@ -1,27 +1,28 @@
 #ifndef LEDDOTMATRIX_WORKSPACE_H
 #define LEDDOTMATRIX_WORKSPACE_H
 
-#include "interfaces/WorkspaceInterface.h"
-
 namespace leddotmatrix {
 
-class Workspace : public WorkspaceInterface {
+class Workspace {
 public:
     static constexpr int MIN_SIZE = 1;
     static constexpr int MAX_SIZE = 128;
 
     static Workspace makeRectangle(int width, int height);
-    [[nodiscard]] bool isSizeValid(int size) const override;
-    [[nodiscard]] bool isDeviceHandleValid(int deviceHandle) const override;
-    [[nodiscard]] int getWidth() const override;
-    [[nodiscard]] int getHeight() const override;
-    [[nodiscard]] int devicesUsed() const override;
+    [[nodiscard]] virtual bool isSizeValid(int size) const;
+    [[nodiscard]] virtual bool isDeviceHandleValid(int deviceHandle) const;
+    [[nodiscard]] virtual int getWidth() const;
+    [[nodiscard]] virtual int getHeight() const;
+    [[nodiscard]] virtual int devicesUsed() const;
+    virtual ~Workspace() = default;
+protected:
+    Workspace() noexcept = default;
 private:
     static int getBoundedSize(int size);
     Workspace(int width, int height) noexcept;
 
-    int width;
-    int height;
+    int width = MIN_SIZE;
+    int height = MAX_SIZE;
 };
 
 }

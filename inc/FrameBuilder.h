@@ -3,23 +3,23 @@
 
 #include <memory>
 
-#include "interfaces/WorkspaceInterface.h"
 #include "interfaces/FrameBuilderInterface.h"
+#include "Workspace.h"
 
 namespace leddotmatrix {
 
 class FrameBuilder : public FrameBuilderInterface {
 public:
-    using WorkspaceInterfacePtr = std::shared_ptr<WorkspaceInterface>;
+    using WorkspacePtr = std::shared_ptr<Workspace>;
 
-    explicit FrameBuilder(WorkspaceInterfacePtr workspaceInterfacePtr);
+    explicit FrameBuilder(WorkspacePtr workspaceInterfacePtr);
     [[nodiscard]] const Frames &getFrames() const override;
     void fillAll(const Frame &frame);
     bool fillOne(int deviceHandle, const Frame &frame);
 private:
     void initSerialFrames();
 
-    WorkspaceInterfacePtr workspace;
+    WorkspacePtr workspace;
     Frames serialFrames;
 };
 
